@@ -5,38 +5,37 @@ import Link from "next/link";
 import PublicLayout from "@/components/layout/PublicLayout";
 
 export default function PricingPage() {
-  const [isAnnual, setIsAnnual] = useState(true);
-  const [activeTab, setActiveTab] = useState("facility"); // 'facility' or 'professional'
+  const [activeTab, setActiveTab] = useState("recruiter"); // 'recruiter' or 'candidate'
 
-  const facilityPlans = [
+  const recruiterPlans = [
     {
       name: "Starter",
       description: "Perfect for small healthcare facilities",
-      price: isAnnual ? 199 : 249,
+      price: "499",
+      duration: "per month",
       features: [
-        "Up to 10 active job postings",
-        "Basic candidate matching",
-        "Standard support",
+        "Up to 50 staff profiles",
+        "Basic scheduling tools",
+        "Manual credential tracking",
+        "Email support",
         "Basic analytics",
-        "Email notifications",
-        "Basic compliance tools",
       ],
       cta: "Get Started",
       popular: false,
     },
     {
       name: "Professional",
-      description: "Ideal for growing medical practices",
-      price: isAnnual ? 399 : 449,
+      description: "Ideal for growing healthcare organizations",
+      price: "999",
+      duration: "per month",
       features: [
-        "Up to 25 active job postings",
-        "Advanced candidate matching",
+        "Up to 200 staff profiles",
+        "AI-powered matching",
+        "Automated credential verification",
         "Priority support",
         "Advanced analytics",
-        "SMS notifications",
-        "Full compliance suite",
-        "Custom branding",
-        "Credential verification",
+        "Custom reporting",
+        "API access",
       ],
       cta: "Start Free Trial",
       popular: true,
@@ -44,68 +43,70 @@ export default function PricingPage() {
     {
       name: "Enterprise",
       description: "For large healthcare networks",
-      price: isAnnual ? 899 : 999,
+      price: "Custom",
+      duration: "custom pricing",
       features: [
-        "Unlimited job postings",
-        "AI-powered matching",
-        "24/7 dedicated support",
-        "Enterprise analytics",
-        "Multi-facility management",
-        "Custom workflows",
-        "API access",
-        "White-label solution",
+        "Unlimited staff profiles",
+        "Custom AI solutions",
+        "Dedicated account manager",
+        "24/7 premium support",
         "Custom integrations",
+        "White-label options",
+        "Advanced security features",
+        "Custom workflow automation",
       ],
       cta: "Contact Sales",
       popular: false,
     },
   ];
 
-  const professionalPlans = [
+  const candidatePlans = [
     {
       name: "Basic",
-      description: "Essential tools for healthcare professionals",
-      price: 0,
+      description: "Perfect for healthcare professionals",
+      price: "0",
+      duration: "forever",
       features: [
         "Create professional profile",
-        "Basic job search",
-        "Apply to jobs",
+        "Browse job opportunities",
+        "Basic job applications",
         "Email notifications",
-        "Basic document storage",
+        "Profile visibility to recruiters",
       ],
-      cta: "Sign Up Free",
+      cta: "Get Started Free",
       popular: false,
     },
     {
       name: "Premium",
-      description: "Advanced features for serious candidates",
-      price: isAnnual ? 19 : 29,
+      description: "For active job seekers",
+      price: "29",
+      duration: "per month",
       features: [
+        "All Basic features",
         "Priority job applications",
         "Advanced job matching",
         "Early access to jobs",
         "Profile highlighting",
-        "Professional development tools",
-        "Credential management",
         "Direct messaging",
-        "Career coaching",
+        "Career insights",
       ],
-      cta: "Get Premium",
+      cta: "Go Premium",
       popular: true,
     },
     {
       name: "Pro",
-      description: "Complete solution for healthcare leaders",
-      price: isAnnual ? 49 : 59,
+      description: "For healthcare leaders",
+      price: "79",
+      duration: "per month",
       features: [
         "All Premium features",
-        "Personal career advisor",
+        "Career coaching sessions",
         "Resume review",
         "Interview preparation",
         "Salary insights",
-        "Professional network",
         "Leadership resources",
-        "Exclusive events access",
+        "Networking events access",
+        "Custom career roadmap",
       ],
       cta: "Upgrade to Pro",
       popular: false,
@@ -114,170 +115,195 @@ export default function PricingPage() {
 
   const faqs = [
     {
-      question: "Can I change plans at any time?",
+      question: "How does the pricing work?",
       answer:
-        "Yes, you can upgrade, downgrade, or cancel your plan at any time. Changes will be reflected in your next billing cycle.",
+        "Our pricing is based on the number of staff profiles and features needed. The Starter plan is perfect for small facilities, while Professional and Enterprise plans offer more advanced features and capacity.",
+    },
+    {
+      question: "Can I upgrade or downgrade my plan?",
+      answer:
+        "Yes, you can change your plan at any time. When upgrading, you'll get immediate access to new features. When downgrading, changes will take effect at the start of your next billing cycle.",
     },
     {
       question: "Is there a free trial available?",
       answer:
-        "Yes, we offer a 14-day free trial for our Professional and Premium plans. No credit card required to start.",
+        "Yes, we offer a 14-day free trial of our Professional plan, allowing you to experience our advanced features before making a decision.",
     },
     {
       question: "What payment methods do you accept?",
       answer:
-        "We accept all major credit cards, ACH transfers, and wire transfers for Enterprise plans.",
-    },
-    {
-      question: "Are there any hidden fees?",
-      answer:
-        "No hidden fees. The price you see is the price you pay. All features are clearly listed for each plan.",
-    },
-    {
-      question: "Do you offer refunds?",
-      answer:
-        "Yes, we offer a 30-day money-back guarantee if you're not satisfied with our service.",
+        "We accept all major credit cards, ACH payments, and wire transfers for Enterprise customers. All payments are processed securely through our payment partners.",
     },
   ];
 
   return (
     <PublicLayout>
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-600/50 to-transparent"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
-              Simple, Transparent Pricing
-            </h1>
-            <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-              Choose the perfect plan for your healthcare staffing needs
-            </p>
+      <div className="relative bg-white overflow-hidden">
+        {/* Geometric Patterns */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-50 rounded-full mix-blend-multiply blur-xl opacity-70 animate-blob"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(219,234,254,0.3),transparent)] opacity-70"></div>
+        </div>
 
-            {/* Billing Toggle */}
-            <div className="flex items-center justify-center space-x-4 mb-8">
-              <span
-                className={`text-lg ${
-                  !isAnnual ? "text-white" : "text-blue-200"
-                }`}
-              >
-                Monthly
-              </span>
-              <button
-                onClick={() => setIsAnnual(!isAnnual)}
-                className="relative inline-flex h-8 w-16 items-center rounded-full bg-blue-400/30 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-900"
-              >
-                <span
-                  className={`inline-block h-6 w-6 transform rounded-full bg-white transition duration-200 ease-in-out ${
-                    isAnnual ? "translate-x-9" : "translate-x-1"
+        <div className="relative z-10">
+          <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-24">
+            <div className="max-w-3xl mx-auto text-center">
+              <div className="inline-flex items-center justify-center p-2 bg-blue-50 rounded-xl mb-7">
+                <span className="inline-block bg-blue-600 rounded-lg w-2 h-2 animate-pulse mr-2"></span>
+                <p className="text-blue-600 font-medium">
+                  Simple, Transparent Pricing
+                </p>
+              </div>
+
+              <h1 className="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl">
+                Choose the Right Plan for
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-500 ml-3">
+                  Your Needs
+                </span>
+              </h1>
+
+              <p className="mt-7 text-lg text-gray-600 max-w-2xl mx-auto">
+                Flexible pricing options designed for both healthcare facilities
+                and professionals
+              </p>
+
+              {/* Plan Type Toggle */}
+              <div className="mt-12 inline-flex p-1 bg-gray-100 rounded-xl">
+                <button
+                  onClick={() => setActiveTab("recruiter")}
+                  className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all ${
+                    activeTab === "recruiter"
+                      ? "bg-white text-blue-600 shadow-sm"
+                      : "text-gray-600 hover:text-gray-900"
                   }`}
-                />
-              </button>
-              <span
-                className={`text-lg ${
-                  isAnnual ? "text-white" : "text-blue-200"
-                }`}
-              >
-                Annual
-                <span className="ml-1 text-green-400 text-sm">Save 20%</span>
-              </span>
-            </div>
-
-            {/* Plan Type Toggle */}
-            <div className="inline-flex rounded-lg bg-blue-400/20 p-1">
-              <button
-                onClick={() => setActiveTab("facility")}
-                className={`px-6 py-2.5 text-sm font-semibold rounded-md transition-all ${
-                  activeTab === "facility"
-                    ? "bg-white text-blue-600"
-                    : "text-blue-100 hover:text-white"
-                }`}
-              >
-                For Facilities
-              </button>
-              <button
-                onClick={() => setActiveTab("professional")}
-                className={`px-6 py-2.5 text-sm font-semibold rounded-md transition-all ${
-                  activeTab === "professional"
-                    ? "bg-white text-blue-600"
-                    : "text-blue-100 hover:text-white"
-                }`}
-              >
-                For Professionals
-              </button>
+                >
+                  For Healthcare Facilities
+                </button>
+                <button
+                  onClick={() => setActiveTab("candidate")}
+                  className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all ${
+                    activeTab === "candidate"
+                      ? "bg-white text-blue-600 shadow-sm"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  For Healthcare Professionals
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-white curved-bottom-edge"></div>
       </div>
 
-      {/* Pricing Cards */}
-      <div className="py-24 bg-gradient-to-b from-white to-gray-50">
+      {/* Pricing Section */}
+      <div className="py-24 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {(activeTab === "facility" ? facilityPlans : professionalPlans).map(
+            {(activeTab === "recruiter" ? recruiterPlans : candidatePlans).map(
               (plan, index) => (
                 <div
                   key={index}
-                  className={`relative bg-white rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl ${
+                  className={`relative group rounded-2xl p-8 ${
                     plan.popular
-                      ? "border-blue-400 scale-105 md:scale-110"
-                      : "border-gray-100"
-                  }`}
+                      ? "bg-gradient-to-b from-blue-600 to-blue-700 text-white transform hover:-translate-y-1"
+                      : "bg-white hover:-translate-y-1"
+                  } transition-all duration-300 shadow-sm hover:shadow-xl`}
                 >
                   {plan.popular && (
-                    <div className="absolute -top-5 left-0 right-0 mx-auto w-32 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 px-3 py-2 text-sm font-semibold text-white text-center shadow-lg">
-                      Most Popular
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <div className="inline-flex items-center justify-center px-4 py-1 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full text-sm font-semibold text-white shadow-lg">
+                        Most Popular
+                      </div>
                     </div>
                   )}
-                  <div className="p-8">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+
+                  <div className="text-center">
+                    <h3
+                      className={`text-2xl font-bold mb-2 ${
+                        plan.popular ? "text-white" : "text-gray-900"
+                      }`}
+                    >
                       {plan.name}
                     </h3>
-                    <p className="text-gray-600 mb-6">{plan.description}</p>
+                    <p
+                      className={`text-sm mb-6 ${
+                        plan.popular ? "text-blue-100" : "text-gray-600"
+                      }`}
+                    >
+                      {plan.description}
+                    </p>
                     <div className="mb-6">
-                      <span className="text-4xl font-bold text-gray-900">
-                        ${plan.price}
+                      <span
+                        className={`text-5xl font-bold ${
+                          plan.popular ? "text-white" : "text-gray-900"
+                        }`}
+                      >
+                        {plan.price === "Custom" ? "" : "$"}
+                        {plan.price}
                       </span>
-                      <span className="text-gray-600 ml-2">
-                        /{isAnnual ? "year" : "month"}
+                      <span
+                        className={`text-sm ${
+                          plan.popular ? "text-blue-100" : "text-gray-600"
+                        }`}
+                      >
+                        /{plan.duration}
                       </span>
                     </div>
-                    <ul className="space-y-4 mb-8">
-                      {plan.features.map((feature, i) => (
-                        <li
-                          key={i}
-                          className="flex items-start space-x-3 text-gray-600"
+                  </div>
+
+                  <div
+                    className={`space-y-4 mb-8 ${
+                      plan.popular ? "text-blue-100" : "text-gray-600"
+                    }`}
+                  >
+                    {plan.features.map((feature, i) => (
+                      <div key={i} className="flex items-center">
+                        <svg
+                          className={`w-5 h-5 mr-3 ${
+                            plan.popular ? "text-blue-200" : "text-blue-600"
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
                         >
-                          <svg
-                            className="w-5 h-5 text-green-500 mt-1 flex-shrink-0"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="text-center">
                     <Link
-                      href={
-                        plan.cta === "Contact Sales" ? "/contact" : "/signup"
-                      }
-                      className={`block w-full text-center px-6 py-3 rounded-lg text-white font-semibold transition-all ${
+                      href={plan.name === "Enterprise" ? "/contact" : "/login"}
+                      className={`inline-flex items-center justify-center w-full px-6 py-3 rounded-xl text-lg font-semibold transition-all transform hover:scale-105 ${
                         plan.popular
-                          ? "bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 shadow-lg hover:shadow-xl"
-                          : "bg-gray-900 hover:bg-gray-800"
+                          ? "bg-white text-blue-600 hover:bg-blue-50"
+                          : "bg-blue-600 text-white hover:bg-blue-700"
                       }`}
                     >
                       {plan.cta}
+                      <svg
+                        className="w-5 h-5 ml-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </svg>
                     </Link>
                   </div>
                 </div>
@@ -287,27 +313,29 @@ export default function PricingPage() {
         </div>
       </div>
 
-      {/* FAQs Section */}
-      <div className="py-24 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* FAQ Section */}
+      <div className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <span className="text-blue-600 font-semibold">FAQ</span>
+            <h2 className="text-3xl font-bold text-gray-900 mt-2">
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-gray-600">
-              Find answers to common questions about our pricing and plans
+            <p className="mt-4 text-xl text-gray-600">
+              Everything you need to know about our pricing and plans
             </p>
           </div>
-          <div className="space-y-8">
+
+          <div className="grid gap-8 max-w-3xl mx-auto">
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow"
+                className="bg-gray-50 rounded-xl p-8 hover:bg-gray-100 transition-colors"
               >
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   {faq.question}
                 </h3>
-                <p className="text-gray-600">{faq.answer}</p>
+                <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
               </div>
             ))}
           </div>
@@ -315,7 +343,7 @@ export default function PricingPage() {
       </div>
 
       {/* CTA Section */}
-      <div className="py-24 bg-white">
+      <div className="py-24 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-2xl overflow-hidden">
             <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
@@ -324,13 +352,13 @@ export default function PricingPage() {
                 Ready to Get Started?
               </h2>
               <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                Join thousands of healthcare facilities and professionals who
+                Join thousands of healthcare professionals and facilities that
                 trust our platform
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
-                  href="/signup"
-                  className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  href="/login"
+                  className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
                 >
                   Start Free Trial
                   <svg
@@ -349,7 +377,7 @@ export default function PricingPage() {
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center px-8 py-4 rounded-full text-lg font-semibold border-2 border-white text-white hover:bg-white/10 transition-all"
+                  className="inline-flex items-center px-8 py-4 rounded-xl text-lg font-semibold border-2 border-white text-white hover:bg-white/10 transition-all"
                 >
                   Talk to Sales
                 </Link>
